@@ -1,0 +1,9 @@
+<h1><%= @post.title %></h1>
+
+<img src="<%= @post.file.url %>"></img>
+
+<p> comments : </p>
+        <form action='/<%=post.id%>/comments' method="post">
+          <input type="text" name="comments" placeholder="comment" >
+          <input type="submit" value="Comment">
+        </form>

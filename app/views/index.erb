@@ -27,7 +27,7 @@
 
 <div class ="container">
  <%  @posts.each do |post| %>
-      <a href="/post/<%= post.id %>">
+      <a href="/posts/<%= post.id %>">
       <img src="<%= post.file %>"></img> </a>
       <%= post.title %>
       <% end %>

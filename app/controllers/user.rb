@@ -12,10 +12,9 @@ end
 
 
 get '/mainpage' do
-@posts = Post.all
-
+  @user = User.find session[:user_id]
+  @posts = @user.posts
   erb :mainpage
-
 end
 
 
@@ -43,18 +42,25 @@ post "/mainpage" do
   end
 end
 
+get '/posts/:id' do
+  @post = Post.find params[:id]
+  erb :'posts/show'
+end
 
-get ' /uploads' do
+get '/uploads' do
   @post = Post.find params[:user_id]
 
 end
 
 
 post '/uploads' do
+  @user = User.find(session[:user_id])
   @post = Post.new
+  @post.title = params[:upload][:title]
   @post.file = params[:image]
+  @post.user_id = @user.id
   @post.save
-  redirect "/mainpage"
+  redirect "/posts/#{@post.id}"
 end
 
 get '/:pid/comments' do
