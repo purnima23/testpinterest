@@ -1,0 +1,14 @@
+<div class= "container">
+<h1> Profile </h1>
+<h2>hello </h2>
+</div>
+
+
+<div class="container">
+  <%  @posts.each do |post| %>
+      <%= post.title %>
+      <img src="<%= post.file %>"></img>
+      <% end %>
+</div>
+
+</div>

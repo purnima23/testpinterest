@@ -1,0 +1,44 @@
+
+
+<div class="container">
+  <h3> Pins : </h3>
+  <div
+    <%  @posts.each do |post| %>
+        <p><%= post.title %><p>
+        <br>
+
+        <a href="/post/<%= post.id %>">
+        <img src="<%= post.file %>" alt="Some image"> </img> </a>
+        <br>
+        <p> posted on : <%= post.created_at %></p>
+        <br>
+        <p> comments : </p>
+        <form action='/<%=post.id%>/comments' method="post">
+          <input type="text" name="comments" placeholder="comment" >
+          <input type="submit" value="Comment">
+        </form>
+
+        <% end %>
+
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container2">
+    <h3> Upload a Photo! </h3>
+    <form action="/uploads" enctype="multipart/form-data" method="post">
+      <input type="text" name="upload[title]" placeholder="title">
+      <input type="file" name="image" >
+      <input type="Submit" value="Upload">
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href ="/user/:name"> User Profile </a>
+    <br>
+    <a href ="/logout"> Logout </a>
+
+</div>
